@@ -1,19 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using WorldEnum;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : CharacterBehaviour
 {
-    public int life;
-    public int mana;
-    public float speed;
-    public float crouchedSpeed;
-    public float jumpForce;
-
-    private new Rigidbody2D rigidbody;
-
-    public bool isOnGround;
-    public bool isCrouched;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +13,7 @@ public class PlayerBehaviour : MonoBehaviour
         life = 100;
         mana = 50;
         isOnGround = false;
+        facing = FacingEnum.Right;
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -48,42 +40,13 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Stand();
         }
-    }
-
-    public void Stand()
-    {
-        gameObject.transform.localScale += new Vector3(0, 0.25f, 0);
-    }
-
-    private void Jump()
-    {
-        rigidbody.AddForce(transform.up * jumpForce);
-    }
-
-    private void MoveLeft()
-    {
-        gameObject.transform.Translate(-speed, 0, 0);
-    }
-
-    private void MoveRight()
-    {
-        gameObject.transform.Translate(speed, 0, 0);
-    }
-
-    private void Crouch()
-    {
-        gameObject.transform.localScale += new Vector3(0, -0.25f, 0);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.collider.gameObject.tag == "floor"){
-            isOnGround = true;
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartFacingUp();
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) {
-        if (other.collider.gameObject.tag == "floor"){
-            isOnGround = false;
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            StopFacingUp();
         }
     }
 }

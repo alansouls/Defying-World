@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 1736645174}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,8 +368,10 @@ MonoBehaviour:
   life: 0
   mana: 0
   speed: 0
+  crouchedSpeed: 0
   jumpForce: 0
   isOnGround: 0
+  isCrouched: 0
 --- !u!61 &1736645170
 BoxCollider2D:
   m_ObjectHideFlags: 0
