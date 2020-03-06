@@ -48,5 +48,13 @@ public class PlayerBehaviour : CharacterBehaviour
         {
             StopFacingUp();
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            life -= 5;
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            mana -= 2;
+        }
     }
 }
